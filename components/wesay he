@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Hive - Organize Smarter. Collaborate Better.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.4/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .honeycomb-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%23fbbf24' stroke-opacity='0.1' stroke-width='1'/%3E%3C/svg%3E");
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+        input:focus {
+            outline: none;
+            border-color: #fbbf24;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white overflow-x-hidden" style="height: auto; min-height: 100%;">
+
+    <!-- Landing Page -->
+    <div id="landing-page" class="page-section active">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 glass-effect transition-all duration-300" id="navbar">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 sm:h-20">
+                    <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-yellow-400 to-amber-500 hexagon"></div>
+                        <span class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">Task Hive</span>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                        <a href="#home" class="hover:text-yellow-400 transition-colors duration-300">Home</a>
+                        <a href="#about" class="hover:text-yellow-400 transition-colors duration-300">About</a>
+                        <a href="#features" class="hover:text-yellow-400 transition-colors duration-300">Features</a>
+                        <a href="#testimonials" class="hover:text-yellow-400 transition-colors duration-300">Testimonials</a>
+                        <button onclick="showPage('login-page')" class="px-6 py-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-purple-900 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+                            Login
+                        </button>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button class="text-white" onclick="toggleMobileMenu()">
+                            <i class="fas fa-bars text-xl sm:text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center honeycomb-bg pt-20 sm:pt-24 px-4 sm:px-6 lg:px-8">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/50 to-purple-900"></div>
+            <div class="container mx-auto relative z-10">
+                <div class="text-center max-w-5xl mx-auto">
+                    <div class="mb-8 sm:mb-12 flex justify-center" data-aos="zoom-in">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-500 hexagon flex items-center justify-center shadow-2xl">
+                            <i class="fas fa-bee-pollen text-4xl sm:text-5xl md:text-6xl text-purple-900"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight" data-aos="fade-up">
+                        Organize Smarter.<br class="hidden sm:block">
+                        <span class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">Collaborate Better.</span><br class="hidden sm:block">
+                        Achieve More.
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-purple-200 mb-8 sm:mb-12 max-w-3xl mx-auto px-4" data-aos="fade-up" data-aos-delay="100">
+                        Your productivity hive for tasks, teamwork, and focus.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4" data-aos="fade-up" data-aos-delay="200">
+                        <button onclick="showPage('signup-page')" class="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-purple-900 rounded-full font-semibold text-base sm:text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                            Get Started
+                        </button>
+                        <a href="#about" class="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 glass-effect rounded-full font-semibold text-base sm:text-lg hover:bg-white/20 transition-all duration-300">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-2xl sm:text-3xl text-yellow-400"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-purple-900 to-indigo-900">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Welcome to the Hive</h2>
+                    <p class="text-lg sm:text-xl text-purple-200 max-w-3xl mx-auto">
+                        Task Hive is built on the principle that productivity thrives in collaboration. Like bees working together in perfect harmony, our platform brings teams together to achieve extraordinary results.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                    <div class="glass-effect rounded-3xl p-6 sm:p-8 text-center hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                            <i class="fas fa-users text-2xl sm:text-3xl text-purple-900"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Teamwork</h3>
+                        <p class="text-sm sm:text-base text-purple-200">Collaborate seamlessly with your team in real-time, sharing tasks and updates effortlessly.</p>
+                    </div>
+                    <div class="glass-effect rounded-3xl p-6 sm:p-8 text-center hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                            <i class="fas fa-rocket text-2xl sm:text-3xl text-purple-900"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Productivity</h3>
+                        <p class="text-sm sm:text-base text-purple-200">Boost your efficiency with smart task management and intuitive workflows designed for success.</p>
+                    </div>
+                    <div class="glass-effect rounded-3xl p-6 sm:p-8 text-center hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                            <i class="fas fa-lightbulb text-2xl sm:text-3xl text-purple-900"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Simplicity</h3>
+                        <p class="text-sm sm:text-base text-purple-200">Experience a clean, intuitive interface that makes task management feel natural and effortless.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 honeycomb-bg relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/80 to-purple-900/80"></div>
+            <div class="container mx-auto max-w-7xl relative z-10">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Powerful Features</h2>
+                    <p class="text-lg sm:text-xl text-purple-200 max-w-3xl mx-auto">
+                        Everything you need to supercharge your productivity and achieve your goals.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div class="glass-effect rounded-3xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-amber-500 hexagon flex items-center justify-center mb-4 sm:mb-6">
+                            <i class="fas fa-tasks text-xl sm:text-2xl text-purple-900"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Smart Task Tracking</h3>
+                        <p class="text-sm sm:text-base text-purple-200">Organize tasks with priorities, deadlines, and custom labels for maximum clarity.</p>
+                    </div>
+                    <div class="glass-effect rounded-3xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-amber-500 hexagon flex items-center justify-center mb-4 sm:mb-6">
+                            <i class="fas fa-users-cog text-xl sm:text-2xl text-purple-900"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Team Collaboration</h3>
+                        <p class="text-sm sm:text-base text-purple-200">Work together seamlessly with real-time updates, comments, and file sharing.</p>
+                    </div>
+                    <div class="glass-effect rounded-3xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-amber-500 hexagon flex items-center justify-center mb-4 sm:mb-6">
+                            <i class="fas fa-chart-line text-xl sm:text-2xl text-purple-900"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Progress Analytics</h3>
+                        <p class="text-sm sm:text-base text-purple-200">Visualize your productivity with insightful charts and performance metrics.</p>
+                    </div>
+                    <div class="glass-effect rounded-3xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-amber-500 hexagon flex items-center justify-center mb-4 sm:mb-6">
+                            <i class="fas fa-palette text-xl sm:text-2xl text-purple-900"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Intuitive Design</h3>
+                        <p class="text-sm sm:text-base text-purple-200">Beautiful, user-friendly interface that makes task management a pleasure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-purple-900 to-indigo-900">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">What Our Users Say</h2>
+                    <p class="text-lg sm:text-xl text-purple-200 max-w-3xl mx-auto">
+                        Join thousands of satisfied users who have transformed their productivity with Task Hive.
+                    </p>
+                </div>
+                <div class="swiper testimonial-swiper" data-aos="fade-up">
+                    <div class="swiper-wrapper pb-12 sm:pb-16">
+                        <div class="swiper-slide">
+                            <div class="glass-effect rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
+                                <div class="flex items-center mb-4 sm:mb-6">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Sarah Johnson" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg sm:text-xl font-bold">Sarah Johnson</h4>
+                                        <p class="text-sm sm:text-base text-purple-300">Product Manager</p>
+                                    </div>
+                                </div>
+                                <div class="flex mb-3 sm:mb-4">
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                </div>
+                                <p class="text-sm sm:text-base text-purple-200 leading-relaxed">
+                                    "Task Hive has completely transformed how our team manages projects. The intuitive interface and powerful collaboration features make it indispensable for our workflow."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="glass-effect rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
+                                <div class="flex items-center mb-4 sm:mb-6">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Michael Chen" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg sm:text-xl font-bold">Michael Chen</h4>
+                                        <p class="text-sm sm:text-base text-purple-300">Software Engineer</p>
+                                    </div>
+                                </div>
+                                <div class="flex mb-3 sm:mb-4">
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                </div>
+                                <p class="text-sm sm:text-base text-purple-200 leading-relaxed">
+                                    "As a developer, I appreciate the clean design and smooth performance. Task Hive helps me stay organized and focused on what matters most."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="glass-effect rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
+                                <div class="flex items-center mb-4 sm:mb-6">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Emily Rodriguez" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg sm:text-xl font-bold">Emily Rodriguez</h4>
+                                        <p class="text-sm sm:text-base text-purple-300">Marketing Director</p>
+                                    </div>
+                                </div>
+                                <div class="flex mb-3 sm:mb-4">
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                </div>
+                                <p class="text-sm sm:text-base text-purple-200 leading-relaxed">
+                                    "The analytics features give us incredible insights into our team's productivity. Task Hive has become an essential tool for managing our marketing campaigns."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="glass-effect rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
+                                <div class="flex items-center mb-4 sm:mb-6">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="David Kim" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg sm:text-xl font-bold">David Kim</h4>
+                                        <p class="text-sm sm:text-base text-purple-300">Startup Founder</p>
+                                    </div>
+                                </div>
+                                <div class="flex mb-3 sm:mb-4">
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm sm:text-base"></i>
+                                </div>
+                                <p class="text-sm sm:text-base text-purple-200 leading-relaxed">
+                                    "Task Hive scaled perfectly with our growing startup. It's the perfect balance of simplicity and powerful features that keeps our team aligned and productive."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->     
+        
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="page-section">
+        <div class="min-h-screen flex items-center justify-center honeycomb-bg px-4 sm:px-6 lg:px-8 py-12">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-purple-800/90 to-indigo-900/90"></div>
+            <div class="w-full max-w-md relative z-10">
+                <div class="text-center mb-8" data-aos="fade-down">
+                    <button onclick="showPage('landing-page')" class="inline-flex items-center text-purple-200 hover:text-yellow-400 transition-colors mb-6">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                    </button>
+                    <div class="flex justify-center mb-6">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-amber-500 hexagon flex items-center justify-center">
+                            <i class="fas fa-bee-pollen text-2xl sm:text-3xl text-purple-900"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-2">Welcome Back</h1>
+                    <p class="text-purple-200">Log in to your Task Hive account</p>
+                </div>
+                <div class="glass-effect rounded-3xl p-8 sm:p-10" data-aos="fade-up">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="login-email" class="block text-sm font-medium mb-2">Email Address</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-envelope text-purple-300"></i>
+                                </div>
+                                <input type="email" id="login-email" class="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 transition-all duration-300" placeholder="you@example.com" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="login-password" class="block text-sm font-medium mb-2">Password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-lock text-purple-300"></i>
+                                </div>
+                                <input type="password" id="login-password" class="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 transition-all duration-300" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-4 h-4 rounded border-white/20 bg-white/10 text-yellow-400 focus:ring-yellow-400 focus:ring-offset-0">
+                                <span class="ml-2 text-purple-200">Remember me</span>
+                            </label>
+                            <a href="#" class="text-yellow-400 hover:text-yellow-300 transition-colors">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-gradient-to-r from-yellow-400 to-amber-500 text-purple-900 rounded-xl font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                            Log In
+                        </button>
+                    </form>
+                    <div class="mt-8 text-center">
+                        <p class="text-purple-200">Don't have an account? <button onclick="showPage('signup-page')" class="text-yellow-400 hover:text-yellow-300 font-semibold transition-colors">Create Account</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div id="signup-page" class="page-section">
+        <div class="min-h-screen flex items-center justify-center honeycomb-bg px-4 sm:px-6 lg:px-8 py-12">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-purple-800/90 to-indigo-900/90"></div>
+            <div class="w-full max-w-md relative z-10">
+                <div class="text-center mb-8" data-aos="fade-down">
+                    <button onclick="showPage('landing-page')" class="inline-flex items-center text-purple-200 hover:text-yellow-400 transition-colors mb-6">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                    </button>
+                    <div class="flex justify-center mb-6">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-amber-500 hexagon flex items-center justify-center">
+                            <i class="fas fa-bee-pollen text-2xl sm:text-3xl text-purple-900"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-2">Join the Hive</h1>
+                    <p class="text-purple-200">Create your Task Hive account</p>
+                </div>
+                <div class="glass-effect rounded-3xl p-8 sm:p-10" data-aos="fade-up">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="signup-name" class="block text-sm font-medium mb-2">Full Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-user text-purple-300"></i>
+                                </div>
+                                <input type="text" id="signup-name" class="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 transition-all duration-300" placeholder="John Doe" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="signup-email" class="block text-sm font-medium mb-2">Email Address</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-envelope text-purple-300"></i>
+                                </div>
+                                <input type="email" id="signup-email" class="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 transition-all duration-300" placeholder="you@example.com" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="signup-password" class="block text-sm font-medium mb-2">Password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-lock text-purple-300"></i>
+                                </div>
+                                <input type="password" id="signup-password" class="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 transition-all duration-300" placeholder="Create a password" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="signup-confirm-password" class="block text-sm font-medium mb-2">Confirm Password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-lock text-purple-300"></i>
+                                </div>
+                                <input type="password" id="signup-confirm-password" class="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 transition-all duration-300" placeholder="Confirm your password" required>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <input type="checkbox" class="w-4 h-4 mt-1 rounded border-white/20 bg-white/10 text-yellow-400 focus:ring-yellow-400 focus:ring-offset-0" required>
+                            <label class="ml-2 text-sm text-purple-200">
+                                I agree to the <a href="#" class="text-yellow-400 hover:text-yellow-300">Terms of Service</a> and <a href="#" class="text-yellow-400 hover:text-yellow-300">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-gradient-to-r from-yellow-400 to-amber-500 text-purple-900 rounded-xl font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                            Create Account
+                        </button>
+                    </form>
+                    <div class="mt-8 text-center">
+                        <p class="text-purple-200">Already have an account? <button onclick="showPage('login-page')" class="text-yellow-400 hover:text-yellow-300 font-semibold transition-colors">Log In</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.2.4/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        const swiper = new Swiper('.testimonial-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.hexagon', {
+            scrollTrigger: {
+                trigger: '.hexagon',
+                start: 'top 80%',
+            },
+            rotation: 360,
+            duration: 1.5,
+            ease: 'power2.out'
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (nav && window.scrollY > 100) {
+                nav.style.background = 'rgba(88, 28, 135, 0.95)';
+            } else if (nav) {
+                nav.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+            AOS.refresh();
+        }
+
+        function toggleMobileMenu() {
+            alert('Mobile menu functionality - implement as needed');
+        }
+    </script>
+</body>
+</html>

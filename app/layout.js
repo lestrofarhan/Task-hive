@@ -19,9 +19,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white overflow-x-hidden`}
+        style={{ height: "auto", minHeight: "100%" }}
+        cz-shortcut-listen="true"
       >
+        
         {children}
       </body>
     </html>
